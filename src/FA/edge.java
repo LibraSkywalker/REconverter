@@ -12,8 +12,25 @@ public class edge {
         name = _name;
         head = _head;
         tail = _tail;
-        nextEdge = head.firstEdge;
-        head.firstEdge = this;
+
+        if (head.firstEdge == null)
+            head.firstEdge = this;
+        if (head.lastEdge != null)
+            head.lastEdge.nextEdge = this;
+        head.lastEdge = this;
     }
 
+    void delete(){
+        if (head.firstEdge == this)
+            head.firstEdge = nextEdge;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof edge)
+            return head.equals(((edge) obj).head) &&
+                    tail.equals(((edge) obj).tail) &&
+                    name.equals(((edge) obj).name);
+        return false;
+    }
 }

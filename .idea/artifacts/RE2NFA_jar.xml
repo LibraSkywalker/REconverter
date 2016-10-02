@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="RE2NFA:jar">
+    <output-path>$PROJECT_DIR$/test</output-path>
+    <root id="archive" name="Regular Expression and Finite Automata.jar">
+      <element id="module-output" name="Regular Expression and Finite Automata" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/antlr-4.5.3-complete.jar" path-in-jar="/" />
+      <element id="library" level="project" name="antlr-4.5.3-complete" />
+    </root>
+  </artifact>
+</component>

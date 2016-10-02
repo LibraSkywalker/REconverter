@@ -1,0 +1,62 @@
+digraph{
+	rankdir = LR
+	node[shape = circle]
+	start[style = invis]
+	start->0[label = start]
+	2[shape = doublecircle]
+	0->1[label = ¦Å]
+	0->2[label = ¦Å]
+	1->3[label = ¦Å]
+	1->4[label = ¦Å]
+	3->5[label = ¦Å]
+	3->6[label = ¦Å]
+	4->7[label = ¦Å]
+	4->8[label = ¦Å]
+	5->9[label = a]
+	6->10[label = ¦Å]
+	7->11[label = b]
+	8->12[label = ¦Å]
+	9->13[label = ¦Å]
+	10->13[label = ¦Å]
+	11->8[label = ¦Å]
+	11->7[label = ¦Å]
+	12->2[label = ¦Å]
+	12->1[label = ¦Å]
+	13->12[label = ¦Å]
+}
+
+
+
+
+
+\begin{table}[!hbp]
+\begin{tabular}{|c|c|c|c|}
+NFA		& DFA	& a	& b	
+\hline
+{0,13,4,6,5,10,1,3,7,8,2,12}	& 0	& 1	& 2	\\
+\hline
+{13,4,6,5,9,10,1,3,7,8,2,12}	& 1	& 1	& 2	\\
+\hline
+{13,4,6,5,10,1,3,11,8,7,2,12}	& 2	& 1	& 2	\\
+\hline
+\end{tabular}
+\end{table} 
+
+
+
+
+
+
+digraph{
+	rankdir = LR
+	node[shape = circle]
+	start[style = invis]
+	start->0[label = start]
+	0,1,2[shape = doublecircle]
+	0->1[label = a]
+	0->2[label = b]
+	1->1[label = a]
+	1->2[label = b]
+	2->1[label = a]
+	2->2[label = b]
+}

@@ -24,7 +24,7 @@ public class NFA {
             startState = new node();
             AcceptState = new node();
             new edge(startState,sub1.startState," ");
-            new edge(startState,sub1.startState," ");
+            new edge(startState,sub2.startState," ");
             new edge(sub1.AcceptState, AcceptState," ");
             new edge(sub2.AcceptState, AcceptState," ");
         }
@@ -36,18 +36,24 @@ public class NFA {
         new edge(startState,sub.startState," ");
         new edge(sub.AcceptState, AcceptState," ");
         new edge(sub.AcceptState,sub.startState," ");
+        new edge(startState,AcceptState," ");
     }
 
     public void tag(){
         ArrayList<node> queue = new ArrayList<>();
         int queueHead = 0;
-        node now = startState;
-        while (now != null) {
-            now.name = queueHead;
-            for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge)
-                queue.add(nowEdge.tail);
-            now = queue.get(queueHead++);
+        queue.add(startState);
+        while (queueHead < queue.size()) {
+            node now = queue.get(queueHead);
+            now.name = queueHead++;
+            for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge){
+                if (!nowEdge.tail.getVisit()){
+                    queue.add(nowEdge.tail);
+                    nowEdge.tail.setVisit();
+                }
+            }
         }
+        startState.cleanVisit();
     }
 
     @Override
@@ -58,21 +64,27 @@ public class NFA {
                 "\tnode[shape = circle]\n" +
                 "\tstart[style = invis]\n" +
                 "\tstart->0[label = start]\n" +
-                "\t"+ AcceptState.name +"[shape = doublecircle]";
+                "\t"+ AcceptState.name +"[shape = doublecircle]\n";
         ArrayList<node> queue = new ArrayList<>();
         int queueHead = 0;
-        node now = startState;
-        while (now != null) {
-            for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge)
+        queue.add(startState);
+        while (queueHead < queue.size()) {
+            node now = queue.get(queueHead++);
+            for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge) {
                 str += '\t' +
-                        nowEdge.head.name +
+                        nowEdge.head.toString() +
                         "->" +
-                        nowEdge.tail.name +
+                        nowEdge.tail.toString() +
                         "[label = " +
-                        ((nowEdge.name.equals(" ")) ? nowEdge.name : "ε") +
-                        "]\n" ;
-            now = queue.get(queueHead++);
+                        ((nowEdge.name.equals(" ")) ? "ε" : nowEdge.name) +
+                        "]\n";
+                if (!nowEdge.tail.getVisit()){
+                    queue.add(nowEdge.tail);
+                    nowEdge.tail.setVisit();
+                }
+            }
         }
+        startState.cleanVisit();
         return str + "}";
     }
 }
