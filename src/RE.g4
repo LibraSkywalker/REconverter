@@ -7,6 +7,6 @@ expression :
      | expression op = '|' expression
      | op = '(' expression')';
 
-CCHAR : [a-zA-Z];
 EPS : 'eps';
+CCHAR : [a-zA-Z];
 WS : [ \n\t\r]+ -> skip;
