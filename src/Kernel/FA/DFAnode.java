@@ -1,7 +1,6 @@
-package FA;
+package Kernel.FA;
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Created by Bill on 2016/10/2.
@@ -39,8 +38,8 @@ public class DFAnode extends node{
             now.cleanVisit();
     }
 
-    void setName(int num){
-        name = num;
+    void setName(Integer num){
+        name = num.toString();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package FA;
+package Kernel.FA;
 
 import java.util.ArrayList;
 
@@ -12,6 +12,11 @@ public class NFA {
         startState = new node();
         AcceptState = new node();
         new edge(startState, AcceptState,now);
+    }
+
+    public NFA(node _startState,node _AcceptState){
+        startState = _startState;
+        AcceptState = _AcceptState;
     }
 
     public NFA(NFA sub1, NFA sub2, char op){
@@ -41,11 +46,11 @@ public class NFA {
 
     public void tag(){
         ArrayList<node> queue = new ArrayList<>();
-        int queueHead = 0;
+        Integer queueHead = 0;
         queue.add(startState);
         while (queueHead < queue.size()) {
             node now = queue.get(queueHead);
-            now.name = queueHead++;
+            now.name = (queueHead++).toString();
             for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge){
                 if (!nowEdge.tail.getVisit()){
                     queue.add(nowEdge.tail);
@@ -58,12 +63,11 @@ public class NFA {
 
     @Override
     public String toString() {
-        tag();
         String str = "digraph{\n" +
                 "\trankdir = LR\n" +
                 "\tnode[shape = circle]\n" +
                 "\tstart[style = invis]\n" +
-                "\tstart->0[label = start]\n" +
+                "\tstart->"+ startState.toString() +"[label = start]\n" +
                 "\t"+ AcceptState.name +"[shape = doublecircle]\n";
         ArrayList<node> queue = new ArrayList<>();
         int queueHead = 0;

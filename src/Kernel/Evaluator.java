@@ -2,7 +2,7 @@ package Kernel;
 
 import ANTLR.REBaseVisitor;
 import ANTLR.REParser;
-import FA.NFA;
+import Kernel.FA.NFA;
 
 /**
  * Created by Bill on 2016/10/2.

@@ -1,4 +1,4 @@
-package FA;
+package Kernel.FA;
 
 import java.util.*;
 
@@ -13,6 +13,7 @@ public class DFA {
     LinkedList<DFAnode> DFAnodeList = new LinkedList<>();
     public DFA(NFA now){
         prototype = now;
+        convert();
     }
 
     String AcceptState(){
@@ -29,7 +30,7 @@ public class DFA {
                 "\trankdir = LR\n" +
                 "\tnode[shape = circle]\n" +
                 "\tstart[style = invis]\n" +
-                "\tstart->0[label = start]\n" +
+                "\tstart->"+ startState +"[label = start]\n" +
                 "\t"+ AcceptState() +"[shape = doublecircle]\n";
         LinkedList<DFAnode> queue = new LinkedList<>();
         queue.add(startState);
@@ -103,11 +104,11 @@ public class DFA {
 
     public void tag(){
         ArrayList<node> queue = new ArrayList<>();
-        int queueHead = 0;
+        Integer queueHead = 0;
         queue.add(startState);
         while (queueHead < queue.size()) {
             node now = queue.get(queueHead);
-            now.name = queueHead++;
+            now.name = (queueHead++).toString();
             for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge){
                 if (!nowEdge.tail.getVisit()){
                     queue.add(nowEdge.tail);

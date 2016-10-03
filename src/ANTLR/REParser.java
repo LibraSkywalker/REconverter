@@ -17,7 +17,7 @@ public class REParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, CCHAR=5, EPS=6, WS=7;
+		T__0=1, T__1=2, T__2=3, T__3=4, EPS=5, CCHAR=6, WS=7;
 	public static final int
 		RULE_expression = 0;
 	public static final String[] ruleNames = {
@@ -25,10 +25,10 @@ public class REParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'*'", "'|'", "'('", "')'", null, "'eps'"
+		null, "'*'", "'|'", "'('", "')'", "'eps'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, null, null, null, null, "CCHAR", "EPS", "WS"
+		null, null, null, null, null, "EPS", "CCHAR", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -93,14 +93,6 @@ public class REParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof REListener ) ((REListener)listener).enterExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof REListener ) ((REListener)listener).exitExpression(this);
-		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof REVisitor ) return ((REVisitor<? extends T>)visitor).visitExpression(this);
@@ -236,7 +228,7 @@ public class REParser extends Parser {
 		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\t\32\4\2\t\2\3\2"+
 		"\3\2\3\2\3\2\3\2\3\2\3\2\5\2\f\n\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\7\2\25"+
 		"\n\2\f\2\16\2\30\13\2\3\2\2\3\2\3\2\2\2\35\2\13\3\2\2\2\4\5\b\2\1\2\5"+
-		"\f\7\b\2\2\6\f\7\7\2\2\7\b\7\5\2\2\b\t\5\2\2\2\t\n\7\6\2\2\n\f\3\2\2\2"+
+		"\f\7\7\2\2\6\f\7\b\2\2\7\b\7\5\2\2\b\t\5\2\2\2\t\n\7\6\2\2\n\f\3\2\2\2"+
 		"\13\4\3\2\2\2\13\6\3\2\2\2\13\7\3\2\2\2\f\26\3\2\2\2\r\16\f\5\2\2\16\25"+
 		"\5\2\2\6\17\20\f\4\2\2\20\21\7\4\2\2\21\25\5\2\2\5\22\23\f\6\2\2\23\25"+
 		"\7\3\2\2\24\r\3\2\2\2\24\17\3\2\2\2\24\22\3\2\2\2\25\30\3\2\2\2\26\24"+

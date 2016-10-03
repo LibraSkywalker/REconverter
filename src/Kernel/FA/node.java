@@ -1,4 +1,4 @@
-package FA;
+package Kernel.FA;
 
 import java.util.Set;
 
@@ -6,7 +6,7 @@ import java.util.Set;
  * Created by Bill on 2016/10/2.
  */
 public class node {
-    Integer name;
+    String name;
     boolean visit = false;
     edge firstEdge,lastEdge;
     public void setVisit(){
@@ -16,6 +16,11 @@ public class node {
         return visit;
     }
 
+    public node(String _name){
+        name = _name;
+    }
+
+    public node(){}
     public void cleanVisit(){
         visit = false;
         for (edge now = firstEdge; now != null ; now = now.nextEdge)
@@ -34,9 +39,14 @@ public class node {
                 now.tail.register(list);
             }
     }
+
+    public void track(){
+        System.out.println(this + " " + firstEdge + " " + lastEdge);
+    }
+
     @Override
     public String toString() {
-        return (name != null) ? name.toString() : "UNamed";
+        return (name != null) ? name : "UNamed";
     }
 
     @Override
