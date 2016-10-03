@@ -60,7 +60,7 @@ public class DFAnode extends node{
         for (node now : data){
             str += "," + now.toString();
         }
-        return  (str.equals("") ? "trap" : ("{" + str.substring(1)) + "}");
+        return  (str.equals("") ? "trap" : ("\\{" + str.substring(1)) + "\\}");
     }
 
     DFAnode find(Set<DFAnode> reg){

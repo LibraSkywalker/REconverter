@@ -60,10 +60,11 @@ public class DFA {
             str += "|c";
 
         str += "|c|c|}\n";
+        str += "\\hline\n";
         str += "NFA\t\t& DFA\t";
         for (edge nowEdge = startState.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge)
             str += "& "+ nowEdge.name + "\t";
-        str += "\n";
+        str += "\\\\\n";
         str += "\\hline\n";
         LinkedList<DFAnode> queue = new LinkedList<>();
         queue.add(startState);
