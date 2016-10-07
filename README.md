@@ -27,7 +27,7 @@
 + minimizing the DFA
 
 ##NFA specification:
-a -> b [ c ] (connect node a and b with edge c)
+a -> b \[ c \] (connect node a and b with edge c)
 
 start : a (a is the starting state)
 
