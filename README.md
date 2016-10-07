@@ -26,3 +26,11 @@
 
 + minimizing the DFA
 
+NFA specification:
+a->b[c] (connect node a and b with edge c)
+start:a (a is the starting state)
+accept:b (b is the accepting state)
+
+There can be any amount of edges, but there's only one starting state and one accepting state is allowed,for all NFA can be constructed to the form of one start and one accept by adding epsilon moves.
+
+and the word "eps" is reserved for epsilon move, don't choose it as a normal name.
