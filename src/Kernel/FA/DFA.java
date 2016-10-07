@@ -36,6 +36,7 @@ public class DFA {
         queue.add(startState);
         while (queue.size() > 0) {
             DFAnode now = queue.removeFirst();
+            now.setVisit();
             for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge) {
                 str += '\t' +
                         nowEdge.head.toString() +

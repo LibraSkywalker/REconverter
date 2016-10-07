@@ -74,6 +74,7 @@ public class NFA {
         queue.add(startState);
         while (queueHead < queue.size()) {
             node now = queue.get(queueHead++);
+            now.setVisit();
             for (edge nowEdge = now.firstEdge; nowEdge != null; nowEdge = nowEdge.nextEdge) {
                 str += '\t' +
                         nowEdge.head.toString() +
