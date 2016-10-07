@@ -1,14 +1,17 @@
 package Kernel.FA;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Set;
 
 /**
  * Created by Bill on 2016/10/2.
  */
-public class node {
+public class Node {
     String name;
     boolean visit = false;
-    edge firstEdge,lastEdge;
+    LinkedList<Edge> edges = new LinkedList<>();
+
     public void setVisit(){
         visit = true;
     }
@@ -16,32 +19,27 @@ public class node {
         return visit;
     }
 
-    public node(String _name){
+    public Node(String _name){
         name = _name;
     }
 
-    public node(){}
+    public Node(){}
     public void cleanVisit(){
         visit = false;
-        for (edge now = firstEdge; now != null ; now = now.nextEdge)
-            if (now.tail.visit) {
-                now.tail.visit = false;
+        for (Edge now : edges){
+            if (now.tail.getVisit())
                 now.tail.cleanVisit();
-            }
+        }
     }
     public void register(Set<String> list){
         visit = true;
-        for (edge now = firstEdge; now != null ; now = now.nextEdge)
+        for (Edge now : edges)
             if (!now.tail.visit) {
                 if (!list.contains(now.name) && !now.name.equals(" "))
                     list.add(now.name);
                 now.tail.setVisit();
                 now.tail.register(list);
             }
-    }
-
-    public void track(){
-        System.out.println(this + " " + firstEdge + " " + lastEdge);
     }
 
     @Override
@@ -51,8 +49,8 @@ public class node {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof node)
-            return name.equals(((node) obj).name);
+        if (obj instanceof Node)
+            return name.equals(((Node) obj).name);
         return false;
     }
 }

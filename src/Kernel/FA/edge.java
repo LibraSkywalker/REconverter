@@ -3,34 +3,24 @@ package Kernel.FA;
 /**
  * Created by Bill on 2016/10/2.
  */
-public class edge {
+public class Edge {
     String name;
-    node head,tail;
-    edge nextEdge;
+    Node head,tail;
+    Edge nextEdge;
 
-    public edge(node _head,node _tail,String _name){
+    public Edge(Node _head, Node _tail, String _name){
         name = _name;
         head = _head;
         tail = _tail;
-
-        if (head.firstEdge == null)
-            head.firstEdge = this;
-        if (head.lastEdge != null)
-            head.lastEdge.nextEdge = this;
-        head.lastEdge = this;
-    }
-
-    void delete(){
-        if (head.firstEdge == this)
-            head.firstEdge = nextEdge;
+        head.edges.add(this);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof edge)
-            return head.equals(((edge) obj).head) &&
-                    tail.equals(((edge) obj).tail) &&
-                    name.equals(((edge) obj).name);
+        if (obj instanceof Edge)
+            return head.equals(((Edge) obj).head) &&
+                    tail.equals(((Edge) obj).tail) &&
+                    name.equals(((Edge) obj).name);
         return false;
     }
 }
