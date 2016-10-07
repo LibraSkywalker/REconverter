@@ -8,18 +8,21 @@
 
 + Find the JavaArchiveFile (.jar) in the *test* folder.
 
-+ write your regular expression into *text.txt* in the folder.
++ Double Click the *test.bat* to start the command line interface.
 
-+ Double Click the *test.bat* and the result will exist in *result.txt*
++ If you are not familiar with the command, just type "help" in the interface.
 
 ## What is supported:
 
++ parsing RE
+
++ parsing NFA
+
 + convert RE to NFA, the result is shown in Dot Language, You can use [graphviz](http://www.graphviz.org/) to compile it.
 
-+ continue coverting NFA to DFA, both the transition table and the DFA will be shown in the text. (The transion table is shown in Latex table form and the DFA is in dot language)
++ covert NFA to DFA, both the transition table and the DFA are available. (The transition table is in the form of Latex table form and the DFA is in dot language)
 
 ## TODO:
 
 + minimizing the DFA
 
-+ parsing NFA

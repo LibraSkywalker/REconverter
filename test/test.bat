@@ -1,1 +1,1 @@
-java -jar RE2NFA.jar < test.txt >result.txt
+java -jar RE2NFA.jar

@@ -13,19 +13,19 @@ import java.util.Scanner;
  * Created by Bill on 2016/10/4.
  */
 public class Tool {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String cmd = "";
         ControlPanel control = new ControlPanel();
         do{
-            controlLexer lexer = new controlLexer(new ANTLRInputStream(scanner.nextLine()));
-            CommonTokenStream tokens = new CommonTokenStream(lexer) ;
-            controlParser parser = new controlParser(tokens) ;
-            controlParser.ExprContext ctx = parser.expr();
             try {
+                controlLexer lexer = new controlLexer(new ANTLRInputStream(scanner.nextLine()));
+                CommonTokenStream tokens = new CommonTokenStream(lexer) ;
+                controlParser parser = new controlParser(tokens) ;
+                controlParser.ExprContext ctx = parser.expr();
                 cmd = control.visitExpr(ctx);
-            } catch (IOException e){
-                e.printStackTrace();
+            } catch (Exception e){
+                System.err.println("The command is illegal, you can enter \" help \" to get the command manual.");
             }
         } while (!cmd.equals("quit"));
     }
